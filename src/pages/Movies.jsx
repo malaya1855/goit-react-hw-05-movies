@@ -1,24 +1,28 @@
 import { MovieSearch } from 'components/MovieSearch';
-import { useEffect } from 'react';
+import { MovieSearchList } from 'components/MovieSearchList';
+import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { searchMovie } from 'utilities/MoviaApi';
 
 export const Movies = () => {
-  const { searchParams, setSearchParams } = useSearchParams();
+  const [movies, setMovies] = useState();
+  const [searchParams, setSearchParams] = useSearchParams();
   useEffect(() => {
-    // const query = searchParams.get('query');
-    searchMovie(searchParams).then(data => {
-      console.log(data);
-    });
+    const queryMovie = searchParams.get('query');
+    if (queryMovie) {
+      searchMovie(queryMovie).then(data => {
+        setMovies(data.results);
+      });
+    }
   }, [searchParams]);
   const onSubmit = query => {
-    console.log(query);
-    setSearchParams(query);
+    setSearchParams({ query });
   };
 
   return (
     <div>
       <MovieSearch onSubmit={onSubmit} />
+      <MovieSearchList movies={movies} />
     </div>
   );
 };

@@ -1,10 +1,13 @@
 import { useEffect, useState } from 'react';
-import { Link, Outlet, useParams } from 'react-router-dom';
+import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
 import { infoMovie } from 'utilities/MoviaApi';
 
 export const MovieDetails = () => {
   const [movie, setMovie] = useState('');
   const { movieId } = useParams();
+  const location = useLocation();
+  const backLink = location.state?.from ?? '/';
+  // console.log(location.state.from);
   useEffect(() => {
     if (movieId) {
       infoMovie(movieId).then(data => {
@@ -15,6 +18,7 @@ export const MovieDetails = () => {
   if (!movie) return;
   return (
     <div>
+      <Link to={backLink}>Go Back</Link>
       <img
         src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
         alt={movie.title}

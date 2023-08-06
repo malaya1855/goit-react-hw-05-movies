@@ -1,4 +1,4 @@
-import { Header } from 'pages/Header';
+import { Header } from 'pages/Header/Header';
 import { Home } from 'pages/Home';
 import { MovieDetails } from 'pages/MovieDetails';
 import { Movies } from 'pages/Movies';

@@ -9,7 +9,6 @@ export const Reviews = () => {
   useEffect(() => {
     reviewsMovie(movieId).then(data => setReviews(data.results));
   }, []);
-  console.log(reviews);
   if (!reviews) {
     return <p>We do not have any reviews for this movie</p>;
   }
@@ -17,7 +16,7 @@ export const Reviews = () => {
     <ul>
       {reviews.map(review => (
         <li key={review.id}>
-          <p>{review.author}</p>
+          <h3>{review.author}</h3>
           <p>Character: {review.content}</p>
         </li>
       ))}
