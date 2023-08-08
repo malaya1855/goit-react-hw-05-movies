@@ -15,6 +15,6 @@ export const HeaderLink = styled(NavLink)`
 
   &.active {
     text-shadow: 0px 3px 5px #aaaaaa;
-    color: darkblue;
+    color: #be3455;
   }
 `;

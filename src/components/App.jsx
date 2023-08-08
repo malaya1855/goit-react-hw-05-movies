@@ -1,5 +1,5 @@
 import { Header } from 'pages/Header/Header';
-import { Home } from 'pages/Home';
+import { Home } from 'pages/Home/Home';
 import { MovieDetails } from 'pages/MovieDetails';
 import { Movies } from 'pages/Movies';
 import { Navigate, Route, Routes } from 'react-router-dom';

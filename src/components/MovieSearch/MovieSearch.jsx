@@ -1,3 +1,8 @@
+import {
+  Search,
+  SearchBtn,
+  SearchInput,
+} from 'components/MovieSearch/MovieSearch.styled';
 import { useState } from 'react';
 
 export const MovieSearch = ({ onSubmit }) => {
@@ -11,9 +16,9 @@ export const MovieSearch = ({ onSubmit }) => {
     onSubmit(query);
   };
   return (
-    <form onSubmit={onSubmitForm}>
-      <input type="text" onChange={onChangeSearch} />
-      <button type="submit">Search</button>
-    </form>
+    <Search onSubmit={onSubmitForm}>
+      <SearchInput type="text" onChange={onChangeSearch} />
+      <SearchBtn type="submit">Search</SearchBtn>
+    </Search>
   );
 };

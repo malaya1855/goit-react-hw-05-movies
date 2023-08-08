@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { getMovies } from 'utilities/MoviaApi';
+import { HeadTitle } from './Home.styled';
 
 export const Home = () => {
   const [trendingMovies, setTrendingMovies] = useState([]);
@@ -14,7 +15,7 @@ export const Home = () => {
   }, []);
   return (
     <div>
-      <h1>Trending today</h1>
+      <HeadTitle>Trending today</HeadTitle>
       <ul>
         {trendingMovies.map(({ id, title }) => (
           <li key={id}>
