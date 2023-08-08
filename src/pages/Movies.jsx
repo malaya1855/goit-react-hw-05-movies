@@ -1,8 +1,11 @@
 import { MovieSearch } from 'components/MovieSearch/MovieSearch';
-import { MovieSearchList } from 'components/MovieSearchList';
+// import { MovieSearchList } from 'components/MovieSearchList';
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { searchMovie } from 'utilities/MoviaApi';
+
+import { lazy, Suspense } from 'react';
+const MovieSearchList = lazy(() => import('../components/MovieSearchList'));
 
 export const Movies = () => {
   const [movies, setMovies] = useState();
@@ -20,9 +23,11 @@ export const Movies = () => {
   };
 
   return (
-    <div>
-      <MovieSearch onSubmit={onSubmit} />
-      <MovieSearchList movies={movies} />
-    </div>
+    <Suspense fallback={<div>Loading...</div>}>
+      <div>
+        <MovieSearch onSubmit={onSubmit} />
+        <MovieSearchList movies={movies} />
+      </div>
+    </Suspense>
   );
 };

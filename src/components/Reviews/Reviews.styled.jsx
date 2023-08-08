@@ -7,3 +7,7 @@ export const ReviewsList = styled.ul`
 export const ReviewsText = styled.p`
   font-style: italic;
 `;
+
+export const ReviewErrorText = styled.p`
+  margin-left: 20px;
+`;

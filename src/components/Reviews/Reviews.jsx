@@ -1,16 +1,20 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { reviewsMovie } from 'utilities/MoviaApi';
-import { ReviewsList, ReviewsText } from './Reviews.styled';
+import { ReviewErrorText, ReviewsList, ReviewsText } from './Reviews.styled';
 
-export const Reviews = () => {
+const Reviews = () => {
   const { movieId } = useParams();
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
     reviewsMovie(movieId).then(data => setReviews(data.results));
   }, [movieId]);
-
+  if (reviews.length === 0) {
+    return (
+      <ReviewErrorText> There is no reviews for this movie</ReviewErrorText>
+    );
+  }
   return (
     <ReviewsList>
       {reviews.map(review => (
@@ -22,3 +26,5 @@ export const Reviews = () => {
     </ReviewsList>
   );
 };
+
+export default Reviews;

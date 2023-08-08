@@ -13,7 +13,6 @@ export const MovieDetails = () => {
   const { movieId } = useParams();
   const location = useLocation();
   const backLink = location.state?.from ?? '/';
-  // console.log(location.state.from);
   useEffect(() => {
     if (movieId) {
       infoMovie(movieId).then(data => {

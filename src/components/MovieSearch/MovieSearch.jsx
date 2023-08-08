@@ -12,7 +12,6 @@ export const MovieSearch = ({ onSubmit }) => {
     setQuery(ev.target.value);
   };
   const onSubmitForm = ev => {
-    console.log(query);
     ev.preventDefault();
     onSubmit(query);
   };

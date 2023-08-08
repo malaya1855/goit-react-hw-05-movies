@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { creditsMovie } from 'utilities/MoviaApi';
 import { CastImg, CastItem, CastList } from './Cast.styled';
 
-export const Cast = () => {
+const Cast = () => {
   const [cast, setCast] = useState('');
   const { movieId } = useParams();
   useEffect(() => {
@@ -27,3 +27,5 @@ export const Cast = () => {
     </CastList>
   );
 };
+
+export default Cast;
