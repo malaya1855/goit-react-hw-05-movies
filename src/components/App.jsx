@@ -1,10 +1,10 @@
 import { Header } from 'pages/Header/Header';
 import { Home } from 'pages/Home/Home';
-import { MovieDetails } from 'pages/MovieDetails';
+import { MovieDetails } from 'pages/MovieDetails/MovieDetails';
 import { Movies } from 'pages/Movies';
 import { Navigate, Route, Routes } from 'react-router-dom';
-import { Cast } from './Cast';
-import { Reviews } from './Reviews';
+import { Cast } from './Cast/Cast';
+import { Reviews } from './Reviews/Reviews';
 
 export const App = () => {
   return (

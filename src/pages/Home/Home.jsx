@@ -12,7 +12,7 @@ export const Home = () => {
         setTrendingMovies(data.results);
       });
     }
-  }, []);
+  }, [trendingMovies]);
   return (
     <div>
       <HeadTitle>Trending today</HeadTitle>

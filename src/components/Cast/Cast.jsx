@@ -1,27 +1,29 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { creditsMovie } from 'utilities/MoviaApi';
+import { CastImg, CastItem, CastList } from './Cast.styled';
 
 export const Cast = () => {
   const [cast, setCast] = useState('');
   const { movieId } = useParams();
   useEffect(() => {
     creditsMovie(movieId).then(data => setCast(data));
-  }, []);
-  console.log(cast);
+  }, [movieId]);
   if (!cast) return;
   return (
-    <ul>
+    <CastList>
       {cast.cast.map(actor => (
-        <li key={actor.id}>
-          <img
+        <CastItem key={actor.id}>
+          <CastImg
             src={`https://image.tmdb.org/t/p/w500${actor.profile_path}`}
             alt={actor.name}
           />
-          <p>{actor.name}</p>
-          <p>Character: {actor.character}</p>
-        </li>
+          <div>
+            <h3>{actor.name}</h3>
+            <p>Character: {actor.character}</p>
+          </div>
+        </CastItem>
       ))}
-    </ul>
+    </CastList>
   );
 };
