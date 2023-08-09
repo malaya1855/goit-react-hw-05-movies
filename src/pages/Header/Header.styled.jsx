@@ -17,4 +17,9 @@ export const HeaderLink = styled(NavLink)`
     text-shadow: 0px 3px 5px #aaaaaa;
     color: #be3455;
   }
+
+  :hover,
+  :focus {
+    color: #be3455;
+  }
 `;

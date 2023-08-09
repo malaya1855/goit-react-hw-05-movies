@@ -5,7 +5,9 @@ import { useSearchParams } from 'react-router-dom';
 import { searchMovie } from 'utilities/MoviaApi';
 
 import { lazy, Suspense } from 'react';
-const MovieSearchList = lazy(() => import('../components/MovieSearchList'));
+const MovieSearchList = lazy(() =>
+  import('../components/MovieSearchList/MovieSearchList')
+);
 
 export const Movies = () => {
   const [movies, setMovies] = useState();

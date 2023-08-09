@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { getMovies } from 'utilities/MoviaApi';
-import { HeadTitle } from './Home.styled';
+import { HeadTitle, MoviesLink } from './Home.styled';
 
 export const Home = () => {
   const [trendingMovies, setTrendingMovies] = useState([]);
@@ -19,9 +19,9 @@ export const Home = () => {
       <ul>
         {trendingMovies.map(({ id, title }) => (
           <li key={id}>
-            <Link to={`/movies/${id}`} state={{ from: location }}>
+            <MoviesLink to={`/movies/${id}`} state={{ from: location }}>
               {title}
-            </Link>
+            </MoviesLink>
           </li>
         ))}
       </ul>

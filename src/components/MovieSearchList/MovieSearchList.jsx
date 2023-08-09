@@ -1,4 +1,5 @@
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+import { SearchListItem } from './MovisSearchList.styled';
 
 const MovieSearchList = ({ movies }) => {
   const location = useLocation();
@@ -7,9 +8,12 @@ const MovieSearchList = ({ movies }) => {
       <ul>
         {movies.map(movie => (
           <li key={movie.id}>
-            <Link to={`/movies/${movie.id}`} state={{ from: location }}>
+            <SearchListItem
+              to={`/movies/${movie.id}`}
+              state={{ from: location }}
+            >
               {movie.title}
-            </Link>
+            </SearchListItem>
           </li>
         ))}
       </ul>

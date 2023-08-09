@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
-import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
+import { Outlet, useLocation, useParams } from 'react-router-dom';
 import { infoMovie } from 'utilities/MoviaApi';
 import {
   LinkGoBack,
   MovieAddInfo,
+  MovieAddInfoLink,
   MovieImg,
   MovieInfo,
 } from './MovieDetails.styled';
@@ -44,10 +45,14 @@ export const MovieDetails = () => {
           <p>Additional information</p>
           <ul>
             <li>
-              <Link to={`/movies/${movieId}/cast`}>Cast</Link>
+              <MovieAddInfoLink to={`/movies/${movieId}/cast`}>
+                Cast
+              </MovieAddInfoLink>
             </li>
             <li>
-              <Link to={`/movies/${movieId}/reviews`}>Reviews</Link>
+              <MovieAddInfoLink to={`/movies/${movieId}/reviews`}>
+                Reviews
+              </MovieAddInfoLink>
             </li>
           </ul>
         </MovieAddInfo>

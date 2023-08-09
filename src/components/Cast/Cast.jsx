@@ -10,12 +10,17 @@ const Cast = () => {
     creditsMovie(movieId).then(data => setCast(data));
   }, [movieId]);
   if (!cast) return;
+
   return (
     <CastList>
       {cast.cast.map(actor => (
         <CastItem key={actor.id}>
           <CastImg
-            src={`https://image.tmdb.org/t/p/w500${actor.profile_path}`}
+            src={
+              actor.profile_path
+                ? `https://image.tmdb.org/t/p/w500${actor.profile_path}`
+                : ''
+            }
             alt={actor.name}
           />
           <div>

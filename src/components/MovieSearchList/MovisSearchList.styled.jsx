@@ -1,11 +1,6 @@
 import styled from '@emotion/styled';
 import { Link } from 'react-router-dom';
-
-export const HeadTitle = styled.h1`
-  padding-left: 20px;
-`;
-
-export const MoviesLink = styled(Link)`
+export const SearchListItem = styled(Link)`
   text-decoration: none;
   :link,
   :visited {
