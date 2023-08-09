@@ -13,6 +13,11 @@ export const MovieSearch = ({ onSubmit }) => {
   };
   const onSubmitForm = ev => {
     ev.preventDefault();
+    if (!query) {
+      alert('Please input your search request');
+      return;
+    }
+
     onSubmit(query);
   };
   return (

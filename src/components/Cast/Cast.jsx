@@ -2,15 +2,18 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { creditsMovie } from 'utilities/MoviaApi';
 import { CastImg, CastItem, CastList } from './Cast.styled';
+import { ErrorText } from 'components/Reviews/Reviews.styled';
+import noPhotoImg from '../../images/no-photo.png';
 
 const Cast = () => {
-  const [cast, setCast] = useState('');
+  const [cast, setCast] = useState([]);
   const { movieId } = useParams();
   useEffect(() => {
     creditsMovie(movieId).then(data => setCast(data));
   }, [movieId]);
-  if (!cast) return;
-
+  if (cast.length === 0) {
+    return <ErrorText> There is no cast for this movie</ErrorText>;
+  }
   return (
     <CastList>
       {cast.cast.map(actor => (
@@ -19,7 +22,7 @@ const Cast = () => {
             src={
               actor.profile_path
                 ? `https://image.tmdb.org/t/p/w500${actor.profile_path}`
-                : ''
+                : noPhotoImg
             }
             alt={actor.name}
           />

@@ -8,6 +8,7 @@ import {
   MovieImg,
   MovieInfo,
 } from './MovieDetails.styled';
+import noPhotoImg from '../../images/no-photo.png';
 
 const MovieDetails = () => {
   const [movie, setMovie] = useState('');
@@ -21,21 +22,17 @@ const MovieDetails = () => {
       });
     }
   }, [movieId]);
-  // const scrollSmooth = () => {
-  //   // const { height: cardHeight } = .getBoundingClientRect();
-
-  //   window.scrollBy({
-  //     top: '20px',
-  //     behavior: 'smooth',
-  //   });
-  // };
   if (!movie) return;
   return (
     <div>
       <LinkGoBack to={backLink}>Go Back</LinkGoBack>
       <MovieInfo>
         <MovieImg
-          src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+          src={
+            movie.poster_path
+              ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+              : noPhotoImg
+          }
           alt={movie.title}
         />
         <div>
@@ -53,20 +50,10 @@ const MovieDetails = () => {
           <p>Additional information</p>
           <ul>
             <li>
-              <MovieAddInfoLink
-                to={`/movies/${movieId}/cast`}
-                // onScroll={scrollSmooth}
-              >
-                Cast
-              </MovieAddInfoLink>
+              <MovieAddInfoLink to={`cast`}>Cast</MovieAddInfoLink>
             </li>
             <li>
-              <MovieAddInfoLink
-                to={`/movies/${movieId}/reviews`}
-                // onScroll={scrollSmooth}
-              >
-                Reviews
-              </MovieAddInfoLink>
+              <MovieAddInfoLink to={`reviews`}>Reviews</MovieAddInfoLink>
             </li>
           </ul>
         </MovieAddInfo>

@@ -3,20 +3,21 @@ import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { searchMovie } from 'utilities/MoviaApi';
 
-import { lazy, Suspense } from 'react';
+import { Suspense } from 'react';
 import { Loader } from 'components/Loader/Loader';
-const MovieSearchList = lazy(() =>
-  import('../components/MovieSearchList/MovieSearchList')
-);
+import MovieList from 'components/MovieSearchList/MovieSearchList';
+import { ErrorText } from 'components/Reviews/Reviews.styled';
 
-export const Movies = () => {
-  const [movies, setMovies] = useState();
+const Movies = () => {
+  const [movies, setMovies] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [searchParams, setSearchParams] = useSearchParams();
   useEffect(() => {
     const queryMovie = searchParams.get('query');
     if (queryMovie) {
       searchMovie(queryMovie).then(data => {
         setMovies(data.results);
+        setLoading(false);
       });
     }
   }, [searchParams]);
@@ -28,8 +29,15 @@ export const Movies = () => {
     <Suspense fallback={<Loader />}>
       <div>
         <MovieSearch onSubmit={onSubmit} />
-        <MovieSearchList movies={movies} />
+        {loading ? (
+          <Loader />
+        ) : movies.length !== 0 ? (
+          <MovieList movies={movies} />
+        ) : (
+          <ErrorText>There are no movies by your search</ErrorText>
+        )}
       </div>
     </Suspense>
   );
 };
+export default Movies;

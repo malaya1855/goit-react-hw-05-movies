@@ -8,6 +8,6 @@ export const ReviewsText = styled.p`
   font-style: italic;
 `;
 
-export const ReviewErrorText = styled.p`
+export const ErrorText = styled.p`
   margin-left: 20px;
 `;

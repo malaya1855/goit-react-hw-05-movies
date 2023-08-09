@@ -1,30 +1,20 @@
 import { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
 import { getMovies } from 'utilities/MoviaApi';
-import { HeadTitle, MoviesLink } from './Home.styled';
-
-export const Home = () => {
-  const [trendingMovies, setTrendingMovies] = useState([]);
-  const location = useLocation();
+import { HeadTitle } from './Home.styled';
+import MovieList from 'components/MovieSearchList/MovieSearchList';
+const Home = () => {
+  const [movies, setMovies] = useState([]);
   useEffect(() => {
-    if (trendingMovies) {
-      getMovies().then(data => {
-        setTrendingMovies(data.results);
-      });
-    }
-  }, [trendingMovies]);
+    getMovies().then(data => {
+      setMovies(data.results);
+    });
+  }, [movies]);
   return (
     <div>
       <HeadTitle>Trending today</HeadTitle>
-      <ul>
-        {trendingMovies.map(({ id, title }) => (
-          <li key={id}>
-            <MoviesLink to={`/movies/${id}`} state={{ from: location }}>
-              {title}
-            </MoviesLink>
-          </li>
-        ))}
-      </ul>
+      {movies.length !== 0 && <MovieList movies={movies} />}
     </div>
   );
 };
+
+export default Home;
