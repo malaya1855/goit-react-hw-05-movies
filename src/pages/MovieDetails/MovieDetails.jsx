@@ -9,7 +9,7 @@ import {
   MovieInfo,
 } from './MovieDetails.styled';
 
-export const MovieDetails = () => {
+const MovieDetails = () => {
   const [movie, setMovie] = useState('');
   const { movieId } = useParams();
   const location = useLocation();
@@ -61,3 +61,5 @@ export const MovieDetails = () => {
     </div>
   );
 };
+
+export default MovieDetails;
