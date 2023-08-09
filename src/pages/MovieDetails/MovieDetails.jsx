@@ -21,6 +21,14 @@ const MovieDetails = () => {
       });
     }
   }, [movieId]);
+  // const scrollSmooth = () => {
+  //   // const { height: cardHeight } = .getBoundingClientRect();
+
+  //   window.scrollBy({
+  //     top: '20px',
+  //     behavior: 'smooth',
+  //   });
+  // };
   if (!movie) return;
   return (
     <div>
@@ -45,12 +53,18 @@ const MovieDetails = () => {
           <p>Additional information</p>
           <ul>
             <li>
-              <MovieAddInfoLink to={`/movies/${movieId}/cast`}>
+              <MovieAddInfoLink
+                to={`/movies/${movieId}/cast`}
+                // onScroll={scrollSmooth}
+              >
                 Cast
               </MovieAddInfoLink>
             </li>
             <li>
-              <MovieAddInfoLink to={`/movies/${movieId}/reviews`}>
+              <MovieAddInfoLink
+                to={`/movies/${movieId}/reviews`}
+                // onScroll={scrollSmooth}
+              >
                 Reviews
               </MovieAddInfoLink>
             </li>

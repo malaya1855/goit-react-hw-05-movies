@@ -36,6 +36,7 @@ export const MovieAddInfo = styled.div`
 
 export const MovieAddInfoLink = styled(Link)`
   text-decoration: none;
+  overflow: auto;
   :link,
   :visited {
     color: #000;
